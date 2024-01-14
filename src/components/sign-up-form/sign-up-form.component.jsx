@@ -28,14 +28,9 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     // do not use the default fields
     event.preventDefault();
-    console.log("what is the submit");
 
-    console.log(event.target);
-
-    console.log("email: ", email);
-    console.log("password: ", password);
     // confirm password matched
-    if(password != confirmPassword) {
+    if(password !== confirmPassword) {
       alert("password not match");
     }
 
@@ -45,7 +40,7 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if(error.code == 'auth/email-already-in-use') {
+      if(error.code === 'auth/email-already-in-use') {
         alert('can not create user with email already in use');
       } else {
         console.log('user creation encountered an error', error);
